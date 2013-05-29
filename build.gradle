@@ -1,0 +1,28 @@
+apply plugin : 'java'
+apply plugin : 'war'
+apply plugin : 'eclipse-wtp'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
+    compile 'org.springframework:spring-webmvc:3.2.2.RELEASE'
+    compile 'org.springframework:spring-orm:3.2.2.RELEASE'
+    compile 'org.hibernate:hibernate-entitymanager:4.1.10.Final'
+    compile('javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1') {
+        transitive = false
+    }
+    compile('org.glassfish.web:javax.servlet.jsp.jstl:1.2.1') {
+        transitive = false
+    }
+    runtime 'org.hsqldb:hsqldb:2.2.9'
+    
+    testCompile 'junit:junit:4.+'
+    testCompile 'org.mockito:mockito-all:1.9.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.4'
+}
