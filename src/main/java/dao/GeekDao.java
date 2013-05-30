@@ -20,25 +20,39 @@ public class GeekDao {
 	}
 	
 	public List<Geek> findAll() {
-		String jpql = "select spectacle from Spectacle spectacle order by spectacle.titre";
+		String jpql = "select geek from Geek geek";
 		return em.createQuery(jpql, Geek.class).getResultList();
 	}
 	
-	public void persist(Geek spectacle) {
-		em.persist(spectacle);
+	public List<Geek> findByInterests() {
+		String jpql = "select geek from Geek geek join geek.interests";
+		return em.createQuery(jpql, Geek.class).getResultList();
+	}
+	
+	public void persist(Geek geek) {
+		em.persist(geek);
 	}
 	
 	public Geek findById(Long id) {
 		return em.find(Geek.class, id);
 	}
 	
-	public List<Geek> findByArtiste(String artiste) {
-		/*String jpql = 
+	public Geek feelLucky() {
+		List<Geek> geeks = findAll();
+		if(geeks == null) {
+			return null;
+		} else {
+			return geeks.get(0);
+		}
+	}
+	
+	/*public List<Geek> findByArtiste(String artiste) {
+		String jpql = 
 			"select spectacle from Spectacle spectacle"
 			+ " where lower(spectacle.artiste) like :artiste"
 			+ " order by spectacle.titre";
 		return em.createQuery(jpql, Geek.class)
 				 .setParameter("artiste", "%" + artiste.toLowerCase() + "%")
-				 .getResultList();*/
-	}
+				 .getResultList();
+	}*/
 }

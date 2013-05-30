@@ -19,8 +19,20 @@ public class GeekService {
 		super();
 	}
 	
+	public GeekService(GeekDao geekDao) {
+		this.geekDao = geekDao;
+	}
+	
 	public List<Geek> list() {
 		return geekDao.findAll();
+	}
+	
+	public Geek find(long id) {
+		return geekDao.findById(id);
+	}
+	
+	public Geek feelLucky() {
+		return geekDao.feelLucky();
 	}
 	
 

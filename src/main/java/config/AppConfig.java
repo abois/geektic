@@ -73,7 +73,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public LocalContainerEntityManagerFactoryBean emf() {
         LocalContainerEntityManagerFactoryBean result = new LocalContainerEntityManagerFactoryBean();
-        result.setPersistenceUnitName("TP_JPA");
+        result.setPersistenceUnitName("Geektic");
         result.setDataSource(dataSource());
         result.setPersistenceProviderClass(HibernatePersistence.class);
         return result;

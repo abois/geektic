@@ -5,11 +5,3 @@
 /build
 /.classpath
 /.project
-/db
-/caches
-/apache-tomcat-7.0.40
-/wrapper
-/workspace
-/native
-/.metadata
-/hsqldb-2.2.9

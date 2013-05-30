@@ -5,11 +5,17 @@
 package model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
 /**
@@ -36,8 +42,12 @@ public class Geek implements Serializable {
     private String email;
     /*
     private String gravatar;
-    private List<Interet> interets;
     */
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name="geek_interest",
+    joinColumns={@JoinColumn(name="id_geek")},
+    inverseJoinColumns={@JoinColumn(name="id_interest")})
+    private Set<Interest> interests = new HashSet<Interest>();
 
     /* Constructeurs */
     public Geek() {
@@ -83,6 +93,14 @@ public class Geek implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+	public Set<Interest> getInterests() {
+		return interests;
+	}
+
+	public void setInterests(Set<Interest> interests) {
+		this.interests = interests;
+	}
     
     /* Méthodes publiques */
     
