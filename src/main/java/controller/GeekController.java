@@ -1,12 +1,15 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Geek;
+import model.Interest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +25,11 @@ public class GeekController {
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String index(ModelMap model) {
+		Interest i = new Interest(2l, "python");
+		List<Interest> interests = new ArrayList<Interest>();
+		interests.add(i);
+		List<Geek> geeks = service.findByInterests(interests);
+		model.addAttribute("geeks", geeks);
 		return "index";
 	}
 	
@@ -41,7 +49,13 @@ public class GeekController {
 	
 	@RequestMapping(value="/signup", method=RequestMethod.GET)
 	public String signup(ModelMap model) {
-		return "index";
+		model.addAttribute("geek", new Geek());
+		return "signup";
 	}
+	/*
+	@RequestMapping(value="/signup", method=RequestMethod.POST)
+	public ModelAndView signup() {
+		 return new ModelAndView("signup", "command", new Geek());
+	}*/
 
 }

@@ -5,7 +5,8 @@
 package model;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -47,7 +48,7 @@ public class Geek implements Serializable {
     @JoinTable(name="geek_interest",
     joinColumns={@JoinColumn(name="id_geek")},
     inverseJoinColumns={@JoinColumn(name="id_interest")})
-    private Set<Interest> interests = new HashSet<Interest>();
+    private List<Interest> interests = new ArrayList<Interest>();
 
     /* Constructeurs */
     public Geek() {
@@ -94,15 +95,22 @@ public class Geek implements Serializable {
         this.email = email;
     }
 
-	public Set<Interest> getInterests() {
+	public List<Interest> getInterests() {
 		return interests;
 	}
 
-	public void setInterests(Set<Interest> interests) {
+	public void setInterests(List<Interest> interests) {
 		this.interests = interests;
 	}
     
-    /* Méthodes publiques */
+
+	public List<String> getInterestNames() {
+		List<String> names = new ArrayList<String>();
+		for(Interest interest: interests) {
+			names.add(interest.getNom());
+		}
+		return names;
+	}
     
     
 }

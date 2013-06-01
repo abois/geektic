@@ -1,7 +1,8 @@
 package model;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ public class Interest implements Serializable {
 	private String nom;
 	
 	@ManyToMany(mappedBy="interests")
-	private Set<Geek> geeks = new HashSet<Geek>();
+	private List<Geek> geeks = new ArrayList<Geek>();
 	
 	public Interest(long id, String nom) {
 		super();
@@ -47,14 +48,13 @@ public class Interest implements Serializable {
 		this.nom = nom;
 	}
 
-	public Set<Geek> getGeeks() {
+	public List<Geek> getGeeks() {
 		return geeks;
 	}
 
-	public void setGeeks(Set<Geek> geeks) {
+	public void setGeeks(List<Geek> geeks) {
 		this.geeks = geeks;
 	}
-	
 	
 	
 }

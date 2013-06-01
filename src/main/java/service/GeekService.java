@@ -1,8 +1,10 @@
 package service;
 
 import java.util.List;
+import java.util.Set;
 
 import model.Geek;
+import model.Interest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,10 @@ public class GeekService {
 	
 	public Geek find(long id) {
 		return geekDao.findById(id);
+	}
+	
+	public List<Geek> findByInterests(List<Interest> interests) {
+		return geekDao.findByInterests(interests);
 	}
 	
 	public Geek feelLucky() {

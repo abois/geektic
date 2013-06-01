@@ -1,11 +1,13 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import model.Geek;
+import model.Interest;
 
 import org.springframework.stereotype.Repository;
 
@@ -24,9 +26,16 @@ public class GeekDao {
 		return em.createQuery(jpql, Geek.class).getResultList();
 	}
 	
-	public List<Geek> findByInterests() {
-		String jpql = "select geek from Geek geek join geek.interests";
-		return em.createQuery(jpql, Geek.class).getResultList();
+	public List<Geek> findByInterests(List<Interest> interests) {
+		List<String> interestNames = new ArrayList<String>();
+		for(Interest i: interests) {
+			interestNames.add(i.getNom());
+		}
+		/* Retourne les geeks par centres d'interet */
+		/*String jpql = "select geek from Geek geek where geek.interests in (:interests)";
+		return em.createQuery(jpql, Geek.class).setParameter("interests", interests).getResultList();*/
+		String jpql = "select distinct geek from Geek geek join geek.interests as i where i.nom in (:interestNames)";
+		return em.createQuery(jpql, Geek.class).setParameter("interestNames", interestNames).getResultList();
 	}
 	
 	public void persist(Geek geek) {

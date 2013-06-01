@@ -14,6 +14,11 @@
     </header>
 	<section id="wrapper">
 	  <h2>Welcome Geeks !</h2>
+      <ul>
+        <c:forEach var="geek" begin="0" items="${geeks}">
+        <li><a href="<c:url value='/geek'><c:param name='id' value='${geek.id}'/></c:url>">${geek.prenom} ${geek.nom}</a></li>
+        </c:forEach>
+      </ul>
 	</section>
   </body>
 </html>
