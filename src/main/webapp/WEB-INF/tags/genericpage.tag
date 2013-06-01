@@ -21,9 +21,9 @@
       </nav>
       <jsp:invoke fragment="header"/>
     </header>
-    <div id="main-content">
+    <section id="main-content">
       <jsp:doBody/>
-    </div>
+    </section>
     <footer>
       <jsp:invoke fragment="footer"/>
     </footer>

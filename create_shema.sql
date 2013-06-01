@@ -1,17 +1,21 @@
+drop table geek_interest if exists cascade;
 drop table geek if exists cascade;
+drop table interest if exists cascade;
 drop sequence geek_seq if exists;
+drop sequence interest_seq if exists;
 
 create table geek(
 	id numeric not null,
-	nom varchar(255) not null,
-	prenom varchar(255) not null,
+	firstname varchar(255) not null,
+	lastname varchar(255) not null,
 	email varchar(255) not null,
+  gender boolean not null,
 	primary key (id)
 );
 
 create table interest(
 	id numeric not null,
-	nom varchar(255) not null,
+	name varchar(255) not null,
 	primary key (id)
 );
 

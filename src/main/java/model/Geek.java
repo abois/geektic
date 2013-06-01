@@ -37,11 +37,14 @@ public class Geek implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "geek_generator")
     private long id;
     
-    private String nom;
+    private String firstname;
     
-    private String prenom;
+    private String lastname;
     
     private String email;
+    
+    private Boolean gender; // 0 male
+    
     /*
     private String gravatar;
     */
@@ -57,45 +60,54 @@ public class Geek implements Serializable {
         super();
     }
     
-    public Geek(Long id, String nom, String prenom, String email) {
+    public Geek(Long id, String firstname, String lastname, String email, Boolean gender) {
         this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
-    }
-    
-    /* Getters / Setters */
-    public long getId() {
-        return id;
+        this.gender = gender;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    /* GETTERS & SETTERS */
+	public long getId() {
+		return id;
+	}
 
-    public String getNom() {
-        return nom;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+	public String getFirstname() {
+		return firstname;
+	}
 
-    public String getPrenom() {
-        return prenom;
-    }
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
+	public String getLastname() {
+		return lastname;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Boolean getGender() {
+		return gender;
+	}
+
+	public void setGender(Boolean gender) {
+		this.gender = gender;
+	}
 
 	public List<Interest> getInterests() {
 		return interests;
@@ -105,11 +117,10 @@ public class Geek implements Serializable {
 		this.interests = interests;
 	}
     
-
 	public List<String> getInterestNames() {
 		List<String> names = new ArrayList<String>();
 		for(Interest interest: interests) {
-			names.add(interest.getNom());
+			names.add(interest.getName());
 		}
 		return names;
 	}

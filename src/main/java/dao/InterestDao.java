@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import model.Geek;
 import model.Interest;
 
 import org.springframework.stereotype.Repository;

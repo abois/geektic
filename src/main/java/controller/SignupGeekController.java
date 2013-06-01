@@ -41,22 +41,19 @@ public class SignupGeekController {
 
 	@RequestMapping(method=RequestMethod.POST)
 	public String create(@ModelAttribute("geek") Geek geek, BindingResult bindingResult, Model model, String[] interests) {
-		ValidationUtils.rejectIfEmpty(bindingResult, "prenom", "prenom.empty");
-		ValidationUtils.rejectIfEmpty(bindingResult, "nom", "nom.empty");
+		/* Ajout d'un geek avec ses interets */
+		ValidationUtils.rejectIfEmpty(bindingResult, "firstname", "prenom.empty");
+		ValidationUtils.rejectIfEmpty(bindingResult, "lastname", "nom.empty");
 		ValidationUtils.rejectIfEmpty(bindingResult, "email", "email.empty");
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("interests", interestService.list());
 			return "signup";
 		}
-		/*for(String s : interests){
-	        Interest i = new Interest();
-	        i.setNom(s);
-	        geek.getInterests().add(i);
-		}*/
 		service.create(geek);
 		return "redirect:/";
 	}
 	
+	/* Rend possible l'ajout d'un geek avec plusieurs intérets */
 	@InitBinder
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 	       binder.registerCustomEditor(List.class, "interests", new CustomCollectionEditor(List.class) {

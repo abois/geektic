@@ -29,12 +29,12 @@ public class GeekDao {
 	public List<Geek> findByInterests(List<Interest> interests) {
 		List<String> interestNames = new ArrayList<String>();
 		for(Interest i: interests) {
-			interestNames.add(i.getNom());
+			interestNames.add(i.getName());
 		}
 		/* Retourne les geeks par centres d'interet */
 		/*String jpql = "select geek from Geek geek where geek.interests in (:interests)";
 		return em.createQuery(jpql, Geek.class).setParameter("interests", interests).getResultList();*/
-		String jpql = "select distinct geek from Geek geek join geek.interests as i where i.nom in (:interestNames)";
+		String jpql = "select distinct geek from Geek geek join geek.interests as i where i.name in (:interestNames)";
 		return em.createQuery(jpql, Geek.class).setParameter("interestNames", interestNames).getResultList();
 	}
 	

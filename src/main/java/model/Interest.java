@@ -3,7 +3,6 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,15 +21,15 @@ public class Interest implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "interest_generator")
 	private long id;
 	
-	private String nom;
+	private String name;
 	
 	@ManyToMany(mappedBy="interests")
 	private List<Geek> geeks = new ArrayList<Geek>();
 	
-	public Interest(long id, String nom) {
+	public Interest(long id, String name) {
 		super();
 		this.id = id;
-		this.nom = nom;
+		this.name = name;
 	}
 
 	public Interest() {
@@ -45,12 +44,12 @@ public class Interest implements Serializable {
 		this.id = id;
 	}
 
-	public String getNom() {
-		return nom;
+	public String getName() {
+		return name;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public List<Geek> getGeeks() {

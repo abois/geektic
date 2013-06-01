@@ -1,23 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <link href="" rel="stylesheet"/>
-    <title>Geektic</title>
-  </head>
-  <body>
-    <header>
-       <c:import url="header.jsp" />        
-    </header>
-    <section id="wrapper">
+<t:genericpage>
+    <jsp:body>
+      <h2>Geeks !</h2>
       <ul>
         <c:forEach var="geek" begin="0" items="${geeks}">
-        <li><a href="<c:url value='/geek'><c:param name='id' value='${geek.id}'/></c:url>">${geek.prenom} ${geek.nom}</a></li>
+        <li>
+          <a href="<c:url value='/geek/${geek.id}'></c:url>">${geek.firstname} ${geek.lastname}</a>
+          <span class="gender">${geek.gender == true ? 'Femme' : 'Homme'}</span>
+        </li>
         </c:forEach>
       </ul>
-    </section>
-  </body> 
-</html>
+    </jsp:body>
+</t:genericpage>
