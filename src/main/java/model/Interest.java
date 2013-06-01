@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Interest implements Serializable {
@@ -15,6 +18,8 @@ public class Interest implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@SequenceGenerator(name = "interest_generator", sequenceName = "INTEREST_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "interest_generator")
 	private long id;
 	
 	private String nom;

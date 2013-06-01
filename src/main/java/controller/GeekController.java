@@ -9,6 +9,8 @@ import model.Interest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +24,7 @@ public class GeekController {
 	
 	@Autowired
 	private GeekService service;
-	
+
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String index(ModelMap model) {
 		Interest i = new Interest(2l, "python");
@@ -47,15 +49,4 @@ public class GeekController {
 		return "detail";
 	}
 	
-	@RequestMapping(value="/signup", method=RequestMethod.GET)
-	public String signup(ModelMap model) {
-		model.addAttribute("geek", new Geek());
-		return "signup";
-	}
-	/*
-	@RequestMapping(value="/signup", method=RequestMethod.POST)
-	public ModelAndView signup() {
-		 return new ModelAndView("signup", "command", new Geek());
-	}*/
-
 }

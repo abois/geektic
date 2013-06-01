@@ -23,4 +23,5 @@ create table geek_interest(
   primary key (id_geek, id_interest)
 );
 
-create sequence geeke_seq start with 1000;
+create sequence geek_seq start with 1000;
+create sequence interest_seq start with 1000;
