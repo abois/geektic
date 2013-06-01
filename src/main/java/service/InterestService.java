@@ -22,4 +22,8 @@ public class InterestService {
 	public List<Interest> list() {
 		return interestDao.findAll();
 	}
+	
+	public Interest find(Long id) {
+		return interestDao.findById(id);
+	}
 }

@@ -15,7 +15,9 @@
         <form:input path="email" cssClass="error"/>
         <form:errors path="email" cssClass="error"/>
         <form:label path="interests" cssClass="error">Tes centres d'intérêt</form:label>
-    
+        <form:select path="interests">
+        <form:options items="${interests}" itemValue="id" itemLabel="nom" />
+        </form:select>
         <form:errors path="interests" cssClass="error"/>
         <form:button type="submit">Créer mon compte !</form:button>
       </form:form>

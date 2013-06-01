@@ -24,5 +24,9 @@ public class InterestDao {
 		String jpql = "select i from Interest i";
 		return em.createQuery(jpql, Interest.class).getResultList();
 	}
+	
+	public Interest findById(Long id) {
+		return em.find(Interest.class, id);
+	}
 
 }

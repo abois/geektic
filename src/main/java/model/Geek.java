@@ -7,7 +7,6 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,6 +17,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.Cascade;
 
 /**
  *
@@ -45,6 +46,7 @@ public class Geek implements Serializable {
     private String gravatar;
     */
     @ManyToMany(cascade = {CascadeType.ALL})
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
     @JoinTable(name="geek_interest",
     joinColumns={@JoinColumn(name="id_geek")},
     inverseJoinColumns={@JoinColumn(name="id_interest")})
