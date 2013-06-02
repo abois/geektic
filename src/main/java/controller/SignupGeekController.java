@@ -27,7 +27,7 @@ import service.InterestService;
 public class SignupGeekController {
 	
 	@Autowired
-	private GeekService service;
+	private GeekService geekService;
 	
 	@Autowired
 	private InterestService interestService;
@@ -42,14 +42,14 @@ public class SignupGeekController {
 	@RequestMapping(method=RequestMethod.POST)
 	public String create(@ModelAttribute("geek") Geek geek, BindingResult bindingResult, Model model, String[] interests) {
 		/* Ajout d'un geek avec ses interets */
-		ValidationUtils.rejectIfEmpty(bindingResult, "firstname", "prenom.empty");
-		ValidationUtils.rejectIfEmpty(bindingResult, "lastname", "nom.empty");
+		ValidationUtils.rejectIfEmpty(bindingResult, "firstname", "firstname.empty");
+		ValidationUtils.rejectIfEmpty(bindingResult, "lastname", "lastname.empty");
 		ValidationUtils.rejectIfEmpty(bindingResult, "email", "email.empty");
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("interests", interestService.list());
 			return "signup";
 		}
-		service.create(geek);
+		geekService.create(geek);
 		return "redirect:/";
 	}
 	

@@ -1,6 +1,6 @@
-insert into public.geek values (1,'Jean', 'Dupond', 'jd@orange.fr', 0);
-insert into public.geek values (2,'Andre', 'Charcot', 'acharcot@free.fr', 0);
-insert into public.geek values (3,'Alice', 'Marinelo', 'alice.marinelo@hotmail.fr', 1);
+insert into public.geek values (1,'Jean', 'Dupond', 'jd@orange.fr', 0, 'password');
+insert into public.geek values (2,'Andre', 'Charcot', 'acharcot@free.fr', 0, 'password');
+insert into public.geek values (3,'Alice', 'Marinelo', 'alice.marinelo@hotmail.fr', 1, 'password');
 
 insert into public.interest values (1, 'python');
 insert into public.interest values (2, 'java');

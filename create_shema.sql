@@ -6,16 +6,17 @@ drop sequence interest_seq if exists;
 
 create table geek(
 	id numeric not null,
-	firstname varchar(255) not null,
-	lastname varchar(255) not null,
-	email varchar(255) not null,
+	firstname varchar(50) not null,
+	lastname varchar(50) not null,
+	email varchar(100) not null,
   gender boolean not null,
+  password varchar(150),
 	primary key (id)
 );
 
 create table interest(
 	id numeric not null,
-	name varchar(255) not null,
+	name varchar(150) not null,
 	primary key (id)
 );
 

@@ -1,0 +1,156 @@
+/* RESET */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, ol, ul, li, form, label, legend, caption, aside, details, figcaption, figure, footer,header, hgroup, menu, nav, section, summary {
+  margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+
+a img {border:none}
+
+
+aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {display: block}
+
+/* STYLES */
+body {
+  font-family: "RawengulkSans";
+  letter-spacing: 0.09em;
+  width: 1024px;
+  margin: 0 auto;
+  background: #151717;
+}
+
+header {
+  height: 80px;
+  border-bottom: 1px solid #555;
+  display: table;
+  overflow: hidden;
+  background: #151717;
+}
+
+header h1 {
+  height: 80px;
+  width: 482px;
+  padding-left: 30px;
+  display: table-cell;
+  font-size: 2.5em;
+  vertical-align: middle;
+  color: #42A3F9;
+}
+
+header nav ul {
+  height: 80px;
+  width: 512px;
+  display: table-cell;
+}
+
+header nav ul li {
+  display: inline-block;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  padding: 8px 10px;
+  margin: 0;
+  height: 50px;
+  display: block;
+  text-align: center;
+  color: #42A3F9;
+  text-shadow: 0px 0px 1px #999;
+}
+
+header nav ul li a i {
+  font-size: 2em;
+  display: block;
+  padding: 0 8px;
+}
+
+header nav ul li a span {
+  font-size: 1.1em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+header nav ul li a:hover span {
+  border-bottom: 3px solid #42A3F9;
+  transition: ease 0.25s;
+}
+
+#main-content {
+  background: white;
+  box-shadow: 0px 0px 2px 1px #42A3F9;
+  color: #151717;
+  padding: 20px;
+}
+
+
+/* COMMON */
+h2 {
+  font-size: 1.8em;
+  padding: 8px 0px;
+  margin-bottom: 30px;
+  border-bottom: 1px dotted #42A3F9;
+  color: #353B3A;
+}
+
+form {
+  background: #E0E1E2;
+  padding: 10px;
+  overflow: hidden;
+}
+
+form label {
+  float: left;
+  clear: left;
+  width: 200px;
+  padding-right: 5px;
+  margin-top: 10px;
+  text-align: right;
+}
+
+form input, form select {
+  float: left;
+  margin-top: 10px;
+  min-width: 200px;
+  border: 1px solid #DADADA;
+}
+
+form input:focus, form select:focus {
+  box-shadow: 0px 0px 2px 0px #42A3F9;
+  border: 1px solid #DADADA;
+  outline: none;
+}
+
+form div.inputs {
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+form div.buttons {
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px dotted #42A3F9;
+}
+
+form [type=submit] {
+  padding: 8px 10px;
+  text-align: center;
+  font-family: "RawengulkSans";
+  font-size: 1.2em;
+  color: #42A3F9;
+  background: #353B3A;
+  border: 1px solid #151717;
+  box-shadow: 0px 0px 3px 1px #42A3F9;
+  cursor: pointer;
+}

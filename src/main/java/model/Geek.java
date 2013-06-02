@@ -45,7 +45,9 @@ public class Geek implements Serializable {
     
     private Boolean gender; // 0 male
     
-    /*
+    private String password;
+    
+	/*
     private String gravatar;
     */
     @ManyToMany(cascade = {CascadeType.ALL})
@@ -124,6 +126,15 @@ public class Geek implements Serializable {
 		}
 		return names;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
     
     
 }
