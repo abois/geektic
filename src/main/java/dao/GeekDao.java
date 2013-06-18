@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import model.Geek;
 import model.Interest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -27,15 +28,13 @@ public class GeekDao {
 	}
 	
 	public List<Geek> findByInterests(List<Interest> interests) {
-		List<String> interestNames = new ArrayList<String>();
-		for(Interest i: interests) {
-			interestNames.add(i.getName());
-		}
-		/* Retourne les geeks par centres d'interet */
-		/*String jpql = "select geek from Geek geek where geek.interests in (:interests)";
-		return em.createQuery(jpql, Geek.class).setParameter("interests", interests).getResultList();*/
-		String jpql = "select distinct geek from Geek geek join geek.interests as i where i.name in (:interestNames)";
-		return em.createQuery(jpql, Geek.class).setParameter("interestNames", interestNames).getResultList();
+		String jpql = "select distinct geek from Geek geek join geek.interests as i where i in (:interests)";
+		return em.createQuery(jpql, Geek.class).setParameter("interests", interests).getResultList();
+	}
+	
+	public List<Geek> findByGender(List<Boolean> genders) {
+		String jpql = "select geek from Geek geek where geek.gender in (:genders)";
+		return em.createQuery(jpql, Geek.class).setParameter("genders", genders).getResultList();
 	}
 	
 	public void persist(Geek geek) {
@@ -64,4 +63,10 @@ public class GeekDao {
 				 .setParameter("artiste", "%" + artiste.toLowerCase() + "%")
 				 .getResultList();
 	}*/
+	public Geek findByEmail(String email) {
+		String jpql = "select geek from Geek geek where email=:email";
+		Geek geek = em.createQuery(jpql, Geek.class).setParameter("email", email).getSingleResult();
+		System.out.println(geek.getFirstname());
+		return geek;
+	}
 }

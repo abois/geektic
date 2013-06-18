@@ -19,7 +19,8 @@
           <form:input path="email" cssErrorClass="error" required="required" type="email"/>
           <form:errors path="email" cssErrorClass="error"/>
           <form:label path="gender" cssErrorClass="error">Ton sexe</form:label>
-          <form:checkbox path="gender" cssErrorClass="error"/>
+          <i class="icon-male male"></i><form:radiobutton path="gender" value="0" cssErrorClass="error"/>
+          <i class="icon-female female"></i><form:radiobutton path="gender" value="1" cssErrorClass="error"/>
           <form:errors path="gender" cssErrorClass="error"/>
           <form:label path="interests" cssErrorClass="error">Tes centres d'intérêt</form:label>
           <form:select path="interests">

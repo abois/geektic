@@ -17,7 +17,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 
 /**
@@ -25,6 +28,8 @@ import org.hibernate.annotations.Cascade;
  * @author aymeric
  */
 @Entity
+@Table(uniqueConstraints=
+@UniqueConstraint(columnNames = {"id", "email"})) 
 public class Geek implements Serializable {
     
 	/**
@@ -47,14 +52,16 @@ public class Geek implements Serializable {
     
     private String password;
     
-	/*
-    private String gravatar;
-    */
+    private String description;
+	
+    private String avatar;
+
     @ManyToMany(cascade = {CascadeType.ALL})
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
     @JoinTable(name="geek_interest",
     joinColumns={@JoinColumn(name="id_geek")},
     inverseJoinColumns={@JoinColumn(name="id_interest")})
+    @JsonIgnore /* bug fix infinite cycling */
     private List<Interest> interests = new ArrayList<Interest>();
 
     /* Constructeurs */
@@ -119,6 +126,22 @@ public class Geek implements Serializable {
 		this.interests = interests;
 	}
     
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
 	public List<String> getInterestNames() {
 		List<String> names = new ArrayList<String>();
 		for(Interest interest: interests) {

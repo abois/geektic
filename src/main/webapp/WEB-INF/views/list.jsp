@@ -3,13 +3,21 @@
 <t:genericpage>
     <jsp:body>
       <h2>Geeks !</h2>
-      <ul>
+      <div id="list-geeks">
         <c:forEach var="geek" begin="0" items="${geeks}">
-        <li>
-          <a href="<c:url value='/geek/${geek.id}'></c:url>">${geek.firstname} ${geek.lastname}</a>
-          <span class="gender">${geek.gender == true ? 'Femme' : 'Homme'}</span>
-        </li>
+        <div>
+          <a href="<c:url value='/geeks/${geek.id}'></c:url>" class="${geek.gender?'female':'male'}">${geek.firstname} ${geek.lastname}</a>
+          <figure>
+            <img src="${geek.avatar?geek.avatar:'/geektic/static/images/unknown.gif'}">
+          </figure>
+          <span class="list-title">Centres d'intérêt</span>
+          <ul>
+            <c:forEach var="interest" begin="0" items="${geek.interests}">
+            <li>${interest.name}</li>
+            </c:forEach>
+          </ul>
+        </div>
         </c:forEach>
-      </ul>
+      </div>
     </jsp:body>
 </t:genericpage>

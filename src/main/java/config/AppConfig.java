@@ -81,7 +81,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public DataSource dataSource() {
-        DriverManagerDataSource result = new DriverManagerDataSource("jdbc:hsqldb:hsql://localhost/geektic", "sa", "");
+        DriverManagerDataSource result = new DriverManagerDataSource("jdbc:hsqldb:hsql://localhost/GEEKTIC", "sa", "");
         result.setDriverClassName(org.hsqldb.jdbc.JDBCDriver.class.getName());
         return result;
     }

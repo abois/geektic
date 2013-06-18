@@ -14,7 +14,7 @@
           <form:errors path="password" cssErrorClass="error"/>
         </div>
         <div class="buttons">
-          <form:button type="submit">Créer mon compte !</form:button>
+          <form:button type="submit">Connexion !</form:button>
         </div>
       </form:form>
     </jsp:body>

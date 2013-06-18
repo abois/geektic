@@ -36,18 +36,34 @@ public class GeekService {
 	}
 	
 	@Transactional
-	public List<Geek> findByInterests(List<Interest> interests) {
-		return geekDao.findByInterests(interests);
+	public void create(Geek geek) {
+		geekDao.persist(geek);
 	}
 	
 	@Transactional
-	public void create(Geek geek) {
-		geekDao.persist(geek);
+	public List<Geek> search(List<Interest> interests, List<Boolean> genders) {
+		System.out.println("interest : " + interests.isEmpty());
+		System.out.println("interest : " + genders.isEmpty());
+		if(interests.isEmpty())
+			return geekDao.findByGender(genders);
+		List<Geek> geeks = geekDao.findByInterests(interests);
+		if(!genders.isEmpty())
+			geeks.retainAll(geekDao.findByGender(genders));
+		return geeks;
 	}
 	
 	public Geek feelLucky() {
 		return geekDao.feelLucky();
 	}
 	
-
+	public Geek findByEmail(String email) {
+		return geekDao.findByEmail(email);
+	}
+	
+	public boolean checkCredentials(String email, String password) {
+		// Not secure :p
+		Geek geek = findByEmail(email);
+		return geek.getPassword().equals(password);
+	}
+	
 }

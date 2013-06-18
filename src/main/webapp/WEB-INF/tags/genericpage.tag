@@ -8,11 +8,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="<c:url value='/static/css/style.css'></c:url>" rel="stylesheet" />
     <link href="<c:url value='/static/css/font-awesome.min.css'></c:url>" rel="stylesheet" />
+    <script src="<c:url value='/static/js/jquery.min.js'></c:url>"></script>
+    <script src="<c:url value='/static/js/geektic.js'></c:url>"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script> 
     <title>Geektic</title>
   </head>
   <body>
     <header>
-      <h1>GeeKTiC</h1>
+      <div class="brand">
+      	<h1>GeeKTiC</h1>
+      	<span><i class=""></i>Meet <span class="lovely">l<i class="icon-heart icon-small"></i>vely</span> Geeks</span>
+      </div>
       <nav>
         <ul>
           <li><a href="<c:url value='/'></c:url>"><i class="icon-home"></i><span>Accueil</span></a></li>
@@ -24,6 +30,7 @@
       <jsp:invoke fragment="header"/>
     </header>
     <section id="main-content">
+      ${connected_geek.firstname}
       <jsp:doBody/>
     </section>
     <footer>
