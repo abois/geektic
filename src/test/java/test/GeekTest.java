@@ -20,7 +20,7 @@ public class GeekTest {
 
 	private static DbSetupTracker dbSetupTracker = new DbSetupTracker();
 	
-	@Before
+	/*@Before
     public void prepare() throws Exception {
         Operation operation =
             sequenceOf(
@@ -31,7 +31,7 @@ public class GeekTest {
                     .build());
         	DbSetup dbSetup = new DbSetup(new DriverManagerDestination("jdbc:hsqldb:hsql://localhost/geektic", "sa", ""), operation);
         	dbSetupTracker.launchIfNecessary(dbSetup);
-    }
+    }*/
 
 	@Test
 	public void testFindAllGeeks() {

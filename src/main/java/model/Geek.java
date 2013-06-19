@@ -67,6 +67,7 @@ public class Geek implements Serializable {
     private List<Interest> interests = new ArrayList<Interest>();
 
     @OneToMany(mappedBy="geek")
+    @JsonIgnore /* bug fix infinite cycling */
     private List<Audit> audits = new ArrayList<Audit>();
     
     @Transient
