@@ -21,6 +21,8 @@
         <ul>
           <li>Email : ${geek.email}</li>
         </ul>
+        <h3 class="${geek.gender ? 'female' : 'male'}">Nombre de visites</h3>
+        <p>${geek.visitCount}</p>
       </div>     
     </jsp:body>
 </t:genericpage>

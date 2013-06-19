@@ -16,8 +16,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -64,6 +66,12 @@ public class Geek implements Serializable {
     @JsonIgnore /* bug fix infinite cycling */
     private List<Interest> interests = new ArrayList<Interest>();
 
+    @OneToMany(mappedBy="geek")
+    private List<Audit> audits = new ArrayList<Audit>();
+    
+    @Transient
+    private int visitCount;
+    
     /* Constructeurs */
     public Geek() {
         super();
@@ -158,6 +166,21 @@ public class Geek implements Serializable {
 		this.password = password;
 	}
 
+	public void setVisitCount(int visitCount) {
+		this.visitCount = visitCount;
+	}
+	
+    public int getVisitCount() {
+    	return audits.size();
+    }
+
+	public List<Audit> getAudits() {
+		return audits;
+	}
+
+	public void setAudits(List<Audit> audits) {
+		this.audits = audits;
+	}
     
     
 }
