@@ -183,5 +183,8 @@ public class Geek implements Serializable {
 		this.audits = audits;
 	}
     
-    
+	@Override
+    public String toString() {
+		return firstname + " " + lastname;
+	}
 }

@@ -46,7 +46,7 @@ public class GeekTest {
 		}
 	}
 	
-	/*@Test
+	@Test
 	public void testFeelLuckyWhenDbContainsOneGeek() {
 		geeks.add(geek1);
 		try {
@@ -63,12 +63,12 @@ public class GeekTest {
 		geeks.add(geek1);
 		geeks.add(geek2);
 		try {
-			when(mockedGeekDao.findAll()).thenCallRealMethod();
+			when(mockedGeekDao.findAll()).thenReturn(geeks);
 			Geek result = geekService.feelLucky();
 			assertEquals(result, geek2);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-	}*/
+	}
 	
 }
