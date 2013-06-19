@@ -46,7 +46,12 @@ public class GeekDao {
 	}
 	
 	public Geek feelLucky() {
-		return null;
+		List<Geek> geeks = findAll();
+		if(geeks == null) {
+			return null;
+		} else {
+			return geeks.get(0);
+		}
 	}
 	
 	public Geek findByEmail(String email) {

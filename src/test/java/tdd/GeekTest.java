@@ -25,8 +25,7 @@ public class GeekTest {
 	@Test
 	public void testFeelLuckyWhenDbIsEmpty() {
 		try {
-			when(mockedGeekDao.feelLucky()).thenCallRealMethod();
-			Long id = 1l;
+			when(mockedGeekDao.feelLucky()).thenReturn(null);
 			Geek result = geekService.feelLucky();
 			assertEquals(result, null);
 		} catch (Exception e) {
