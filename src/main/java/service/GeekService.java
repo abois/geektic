@@ -52,10 +52,6 @@ public class GeekService {
 		return geeks;
 	}
 	
-	public Geek feelLucky() {
-		return geekDao.feelLucky();
-	}
-	
 	public Geek findByEmail(String email) {
 		return geekDao.findByEmail(email);
 	}
@@ -65,5 +61,11 @@ public class GeekService {
 		Geek geek = findByEmail(email);
 		return geek.getPassword().equals(password);
 	}
+	
+	/* TDD */
+	public Geek feelLucky() {
+		return geekDao.findAll().get(0);
+	}
+	
 	
 }

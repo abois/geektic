@@ -53,12 +53,12 @@ public class GeekDao {
 	}
 	
 	/* TDD */
-	public Geek feelLucky() {
+	/*public Geek feelLucky() {
 		List<Geek> geeks = findAll();
 		if(geeks == null) {
 			return null;
 		} else {
 			return geeks.get(0);
 		}
-	}
+	}*/
 }
