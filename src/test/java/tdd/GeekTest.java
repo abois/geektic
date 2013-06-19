@@ -67,16 +67,15 @@ public class GeekTest {
 		Geek result = geekService.feelLucky(pythonInterests);
 		assertNull(result);
 	}
-	/*
+	
 	@Test
 	public void testFeelLuckyWithInterests() {
-		geeks.add(geek1);
-		geeks.add(geek2);
-		when(mockedGeekDao.findByInterests(interests)).thenCallRealMethod();
-		Geek result = geekService.feelLucky(interests);
+		when(mockedGeekDao.findAll()).thenReturn(geeks);
+		when(mockedGeekDao.findByInterests(pythonInterests)).thenReturn(geekPythonResults);
+		Geek result = geekService.feelLucky(pythonInterests);
 		assertEquals(result.getId(), geek2.getId());
 	}
-	
+	/*
 	@Test
 	public void testFeelLuckyTwiceInARowDontReturnTheSameGeek() {
 		geeks.add(geek1);
