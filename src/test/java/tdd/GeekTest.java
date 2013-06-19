@@ -38,8 +38,8 @@ public class GeekTest {
 	@Test
 	public void testFeelLuckyWhenDbIsEmpty() {
 		try {
-			when(mockedGeekDao.findAll()).thenReturn(null);
-			Geek result = geekService.feelLucky();
+			when(mockedGeekDao.findByInterests(interests)).thenReturn(null);
+			Geek result = geekService.feelLucky(interests);
 			assertEquals(result, null);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -50,8 +50,8 @@ public class GeekTest {
 	public void testFeelLuckyWhenDbContainsOneGeek() {
 		geeks.add(geek1);
 		try {
-			when(mockedGeekDao.findAll()).thenReturn(geeks);
-			Geek result = geekService.feelLucky();
+			when(mockedGeekDao.findByInterests(interests)).thenReturn(geeks);
+			Geek result = geekService.feelLucky(interests);
 			assertEquals(result, geek1);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -63,7 +63,7 @@ public class GeekTest {
 		geeks.add(geek1);
 		geeks.add(geek2);
 		try {
-			when(mockedGeekDao.findAll()).thenReturn(geeks);
+			when(mockedGeekDao.findByInterests(interests)).thenCallRealMethod();
 			Geek result = geekService.feelLucky(interests);
 			assertEquals(result, geek2);
 		} catch (Exception e) {

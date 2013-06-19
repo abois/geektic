@@ -63,10 +63,10 @@ public class GeekService {
 	}
 	
 	/* TDD */
-	public Geek feelLucky() {
+	/*public Geek feelLucky() {
 		return geekDao.findAll().get(0);
-	}
-	
+	}*/
+	/* Methode above has changed to during testing */
 	public Geek feelLucky(List<Interest> interests) {
 		return geekDao.findByInterests(interests).get(0);
 	}
