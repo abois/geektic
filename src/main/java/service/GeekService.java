@@ -67,5 +67,9 @@ public class GeekService {
 		return geekDao.findAll().get(0);
 	}
 	
+	public Geek feelLucky(List<Interest> interests) {
+		return geekDao.findByInterests(interests).get(0);
+	}
+	
 	
 }

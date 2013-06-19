@@ -64,7 +64,7 @@ public class GeekTest {
 		geeks.add(geek2);
 		try {
 			when(mockedGeekDao.findAll()).thenReturn(geeks);
-			Geek result = geekService.feelLucky();
+			Geek result = geekService.feelLucky(interests);
 			assertEquals(result, geek2);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
