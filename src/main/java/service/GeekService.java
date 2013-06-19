@@ -69,11 +69,13 @@ public class GeekService {
 	/* Methode above has changed to during testing */
 	public Geek feelLucky(List<Interest> interests) {
 		System.out.println(geekDao.findAll());
-		if(geekDao.findAll().isEmpty()) {
+		if(geekDao.findAll() == null) {
 			return null;
 		}
 		if(interests.isEmpty())
-			return geekDao.findAll().get(0);
+			return null;
+		if(geekDao.findByInterests(interests) == null || geekDao.findByInterests(interests).isEmpty())
+			return null;
 		return geekDao.findByInterests(interests).get(0);
 	}
 	
