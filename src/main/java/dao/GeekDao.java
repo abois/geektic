@@ -45,6 +45,14 @@ public class GeekDao {
 		return em.find(Geek.class, id);
 	}
 	
+	public Geek findByEmail(String email) {
+		String jpql = "select geek from Geek geek where email=:email";
+		Geek geek = em.createQuery(jpql, Geek.class).setParameter("email", email).getSingleResult();
+		System.out.println(geek.getFirstname());
+		return geek;
+	}
+	
+	/* TDD */
 	public Geek feelLucky() {
 		List<Geek> geeks = findAll();
 		if(geeks == null) {
@@ -52,12 +60,5 @@ public class GeekDao {
 		} else {
 			return geeks.get(0);
 		}
-	}
-	
-	public Geek findByEmail(String email) {
-		String jpql = "select geek from Geek geek where email=:email";
-		Geek geek = em.createQuery(jpql, Geek.class).setParameter("email", email).getSingleResult();
-		System.out.println(geek.getFirstname());
-		return geek;
 	}
 }
