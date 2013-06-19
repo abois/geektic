@@ -75,17 +75,15 @@ public class GeekTest {
 		Geek result = geekService.feelLucky(pythonInterests);
 		assertEquals(result.getId(), geek2.getId());
 	}
-	/*
+	
 	@Test
 	public void testFeelLuckyTwiceInARowDontReturnTheSameGeek() {
-		geeks.add(geek1);
-		geeks.add(geek2);
-		geeks.add(geek3);
-		when(mockedGeekDao.findByInterests(interests)).thenCallRealMethod();
-		Geek result1 = geekService.feelLucky(interests);
-		Geek result2 = geekService.feelLucky(interests);
+		when(mockedGeekDao.findAll()).thenReturn(geeks);
+		when(mockedGeekDao.findByInterests(pythonInterests)).thenReturn(geekPythonResults);
+		Geek result1 = geekService.feelLucky(pythonInterests);
+		Geek result2 = geekService.feelLucky(pythonInterests);
 		System.out.println(result1.getId() + " " + result2.getId());
 		assertFalse(result1.getId() == result2.getId());
-	}*/
+	}
 	
 }
