@@ -82,8 +82,10 @@ public class GeekTest {
 		when(mockedGeekDao.findByInterests(pythonInterests)).thenReturn(geekPythonResults);
 		Geek result1 = geekService.feelLucky(pythonInterests);
 		Geek result2 = geekService.feelLucky(pythonInterests);
-		System.out.println(result1.getId() + " " + result2.getId());
+		Geek result3 = geekService.feelLucky(pythonInterests);
 		assertFalse(result1.getId() == result2.getId());
+		assertFalse(result2.getId() == result3.getId());
+		assertEquals(result1.getId(), result3.getId());
 	}
 	
 }

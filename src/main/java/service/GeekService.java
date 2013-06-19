@@ -66,17 +66,32 @@ public class GeekService {
 	/*public Geek feelLucky() {
 		return geekDao.findAll().get(0);
 	}*/
+	/* List that save the last returned geeks by feel lucky */
+	private List<Interest> _interests;
+	private List<Geek> _geeks;
+	
 	/* Methode above has changed to during testing */
 	public Geek feelLucky(List<Interest> interests) {
-		System.out.println(geekDao.findAll());
+		Geek _geek = null;
 		if(geekDao.findAll() == null) {
-			return null;
+			return _geek;
 		}
 		if(interests.isEmpty())
-			return null;
-		if(geekDao.findByInterests(interests) == null || geekDao.findByInterests(interests).isEmpty())
-			return null;
-		return geekDao.findByInterests(interests).get(0);
+			return _geek;
+		
+		List<Geek> geeks = geekDao.findByInterests(interests);
+		if(geeks == null || geeks.isEmpty())
+			return _geek;
+		
+		/* Return a different geek each time this function is called */
+		if(interests != _interests) {
+			_interests = interests;
+			_geeks = geeks;
+		}
+		_geek = _geeks.get(0);
+		_geeks.remove(0);
+		_geeks.add(_geek);
+		return _geek;
 	}
 	
 	
