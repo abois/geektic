@@ -1,6 +1,5 @@
 package dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,8 +8,8 @@ import javax.persistence.PersistenceContext;
 import model.Geek;
 import model.Interest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class GeekDao {
@@ -61,4 +60,8 @@ public class GeekDao {
 			return geeks.get(0);
 		}
 	}*/
+	@Transactional
+	public void update(Geek geek) {
+		em.merge(geek);
+	}
 }

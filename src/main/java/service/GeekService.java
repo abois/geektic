@@ -101,5 +101,13 @@ public class GeekService {
 		return _geek;
 	}
 	
+	/* TDD */
+	/**
+	 * 
+	 * @return true if setting availability was ok else false
+	 */
+	public boolean drinkTonight() {
+		return false;
+	}
 	
 }

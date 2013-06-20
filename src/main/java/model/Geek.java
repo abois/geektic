@@ -73,6 +73,8 @@ public class Geek implements Serializable {
     @Transient
     private int visitCount;
     
+    private boolean isAvailable;
+    
     /* Constructeurs */
     public Geek() {
         super();
@@ -84,6 +86,7 @@ public class Geek implements Serializable {
         this.lastname = lastname;
         this.email = email;
         this.gender = gender;
+        this.isAvailable = false;
     }
 
     /* GETTERS & SETTERS */
@@ -182,7 +185,15 @@ public class Geek implements Serializable {
 	public void setAudits(List<Audit> audits) {
 		this.audits = audits;
 	}
-    
+	
+	public boolean isAvailable() {
+		return isAvailable;
+	}
+
+	public void setAvailable(boolean isAvailable) {
+		this.isAvailable = isAvailable;
+	}
+
 	@Override
     public String toString() {
 		return firstname + " " + lastname;

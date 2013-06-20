@@ -11,10 +11,11 @@ create table geek(
 	firstname varchar(50) not null,
 	lastname varchar(50) not null,
 	email varchar(100) not null,
-    gender boolean not null,
-    password varchar(150) not null,
+  gender boolean not null,
+  password varchar(150) not null,
 	description longvarchar,
 	avatar varchar(200),
+  isAvailable boolean default 0,
 	primary key (id)
 );
 
