@@ -1,7 +1,6 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import model.Geek;
@@ -106,8 +105,18 @@ public class GeekService {
 	 * 
 	 * @return true if setting availability was ok else false
 	 */
-	public boolean drinkTonight() {
+	public boolean drinkTonight(Geek geek) {
+		int hour = getNowHour();
+		if(hour>6 && hour<19) {
+			geek.setAvailable(true);
+			return true;
+		}
 		return false;
+	}
+	
+	public int getNowHour() {
+		//return Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+		return 10;
 	}
 	
 }
