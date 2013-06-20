@@ -54,10 +54,12 @@ public class GeekService {
 		return geeks;
 	}
 	
+	@Transactional
 	public Geek findByEmail(String email) {
 		return geekDao.findByEmail(email);
 	}
 	
+	@Transactional
 	public boolean checkCredentials(String email, String password) {
 		// Not secure :p
 		Geek geek = findByEmail(email);
@@ -73,6 +75,7 @@ public class GeekService {
 	private static List<Geek> _geeks;
 	
 	/* Methode above has changed to during testing */
+	@Transactional
 	public Geek feelLucky(List<Interest> interests) {
 		Geek _geek = null;
 		if(geekDao.findAll() == null) {

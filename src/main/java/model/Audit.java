@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Audit {
+public class Audit implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
     @Id
     @SequenceGenerator(name = "audit_generator", sequenceName = "AUDIT_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "audit_generator")

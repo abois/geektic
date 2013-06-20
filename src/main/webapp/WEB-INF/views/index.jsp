@@ -7,7 +7,7 @@
       <div id="home-geeks">
         <div class="search-result">
         	<h3>Je recherche ...</h3>
-	        <form method="get" action="<c:url value='/geeks/search'></c:url>" class="search-geeks">
+	        <form method="get" action="<c:url value='/geeks/search'></c:url>" class="search-geeks" id="search">
 	          <h4>Intérets</h4>
 	          <ul>
 	          <c:forEach var="interest" items="${interests}">
@@ -28,7 +28,7 @@
 	        </form>
 	        <h3>J'ai de la chance ...</h3>
 	        <form method="get" action="<c:url value='/geeks/feelLucky'></c:url>" id="feel-lucky" class="search-geeks">
-	        <h4>Intérets</h4>
+	        <h4>Mes centres d'intérets</h4>
 	          <ul>
 	          <c:forEach var="interest" items="${interests}">
 	            <li id="${interest.id}">${interest.name}</li>
