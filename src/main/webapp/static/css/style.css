@@ -213,11 +213,11 @@ form [type=submit] {
   color: #FE78EC
 }
 
-#search-geeks {
+.search-geeks {
     
 }
 
-#search-geeks li {
+.search-geeks li {
   display: inline-block;
   width: 150px;
   padding: 5px;
@@ -228,11 +228,11 @@ form [type=submit] {
   cursor: pointer;
 }
 
-#search-geeks li:not(.clicked):hover {
+.search-geeks li:not(.clicked):hover {
   box-shadow: 0px 0px 3px 1px rgba(100,100,100,0.5);
 }
 
-#search-geeks li.clicked {
+.search-geeks li.clicked {
   opacity: 0.5;
   cursor: default;
 }

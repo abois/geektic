@@ -7,7 +7,7 @@
       <div id="home-geeks">
         <div class="search-result">
         	<h3>Je recherche ...</h3>
-	        <form method="get" action="<c:url value='/geeks/search'></c:url>" id="search-geeks">
+	        <form method="get" action="<c:url value='/geeks/search'></c:url>" class="search-geeks">
 	          <h4>Intérets</h4>
 	          <ul>
 	          <c:forEach var="interest" items="${interests}">
@@ -27,8 +27,21 @@
 	          </div>
 	        </form>
 	        <h3>J'ai de la chance ...</h3>
-	        <form method="post" action="/api/geeks/feelLucky" id="feel-lucky">
-	          <button type="submit">J'ai de la chance !</button>
+	        <form method="get" action="<c:url value='/geeks/feelLucky'></c:url>" id="feel-lucky" class="search-geeks">
+	        <h4>Intérets</h4>
+	          <ul>
+	          <c:forEach var="interest" items="${interests}">
+	            <li id="${interest.id}">${interest.name}</li>
+	          </c:forEach>
+	          </ul>
+	          <select multiple class="hidden" name="interests">
+	            <c:forEach var="interest" items="${interests}">
+	            <option value="${interest.id}">${interest.name}</option>
+	          </c:forEach>
+	          </select>
+	          <div class="buttons">
+	            <button type="submit">J'ai de la chance !</button>
+	          </div>
 	        </form>
 	    </div>
       </div>

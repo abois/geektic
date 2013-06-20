@@ -54,38 +54,39 @@ public class GeekTest {
 	
 	@Test
 	public void testFeelLuckyWhenDbIsEmpty() {
-		when(mockedGeekDao.findAll()).thenReturn(null);
-		when(mockedGeekDao.findByInterests(pythonInterests)).thenReturn(null);
+		processMockTest(null, null);
 		Geek result = geekService.feelLucky(pythonInterests);
 		assertNull(result);
 	}
 	
 	@Test
 	public void testFeelLuckyWhenGeekWithoutInterests() {
-		when(mockedGeekDao.findAll()).thenReturn(geeks);
-		when(mockedGeekDao.findByInterests(pythonInterests)).thenReturn(null);
+		processMockTest(geeks, null);
 		Geek result = geekService.feelLucky(pythonInterests);
 		assertNull(result);
 	}
 	
 	@Test
 	public void testFeelLuckyWithInterests() {
-		when(mockedGeekDao.findAll()).thenReturn(geeks);
-		when(mockedGeekDao.findByInterests(pythonInterests)).thenReturn(geekPythonResults);
+		processMockTest(geeks, geekPythonResults);
 		Geek result = geekService.feelLucky(pythonInterests);
-		assertEquals(result.getId(), geek2.getId());
+		assertEquals(result.getId(), geek3.getId());
 	}
 	
 	@Test
 	public void testFeelLuckyTwiceInARowDontReturnTheSameGeek() {
-		when(mockedGeekDao.findAll()).thenReturn(geeks);
-		when(mockedGeekDao.findByInterests(pythonInterests)).thenReturn(geekPythonResults);
+		processMockTest(geeks, geekPythonResults);
 		Geek result1 = geekService.feelLucky(pythonInterests);
 		Geek result2 = geekService.feelLucky(pythonInterests);
 		Geek result3 = geekService.feelLucky(pythonInterests);
 		assertFalse(result1.getId() == result2.getId());
 		assertFalse(result2.getId() == result3.getId());
 		assertEquals(result1.getId(), result3.getId());
+	}
+	
+	public void processMockTest(List<Geek> findAllReturn, List<Geek> findByInterestReturn) {
+		when(mockedGeekDao.findAll()).thenReturn(findAllReturn);
+		when(mockedGeekDao.findByInterests(pythonInterests)).thenReturn(findByInterestReturn);
 	}
 	
 }

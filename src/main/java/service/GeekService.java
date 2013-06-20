@@ -1,5 +1,7 @@
 package service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import model.Geek;
@@ -67,8 +69,8 @@ public class GeekService {
 		return geekDao.findAll().get(0);
 	}*/
 	/* List that save the last returned geeks by feel lucky */
-	private List<Interest> _interests;
-	private List<Geek> _geeks;
+	private static boolean _tried = false;
+	private static List<Geek> _geeks;
 	
 	/* Methode above has changed to during testing */
 	public Geek feelLucky(List<Interest> interests) {
@@ -84,11 +86,13 @@ public class GeekService {
 			return _geek;
 		
 		/* Return a different geek each time this function is called */
-		if(interests != _interests) {
-			_interests = interests;
+		if(_tried == false) {
 			_geeks = geeks;
+			_tried = true;
 		}
+		System.out.println(_geeks);
 		_geek = _geeks.get(0);
+		System.out.println(_geek);
 		_geeks.remove(0);
 		_geeks.add(_geek);
 		return _geek;

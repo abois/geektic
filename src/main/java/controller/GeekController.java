@@ -79,5 +79,13 @@ public class GeekController {
 		return geeks;
 	}
 	
+	@RequestMapping(value="/geeks/feelLucky", method=RequestMethod.GET)
+	public String feelLucky(@RequestParam(value="interests", required=false) Long[] interests_ids) {
+		List<Interest> interests = interestService.listByIds(interests_ids);
+		Geek geek = geekService.feelLucky(interests);
+		if(geek != null)
+			return "redirect:/geeks/" + geek.getId();
+		return "redirect:/";
+	}
 	
 }
